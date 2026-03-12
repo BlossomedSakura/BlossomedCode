@@ -6,7 +6,7 @@ def quiz_by_aki(questions):
         print(i)
         ans = input("Введите свой ответ: ")
         if ans == j:
-            print("К вам прибавляется 20 очков!")
+            print(f"К вам прибавляется {100 / len(questions)} очков!")
             score += 100 / len(questions)
             counter_true_answers += 1
         else:
@@ -38,7 +38,8 @@ questions = {
     "Столица Люксембурга?": "Люксембург",
     "6 + 67 + 67 + 7": "147",
     "Вышел зайчик на крыльцо... Продолжи.": "Почесать свое яйцо",
-    "HTML - это язык?": "Нет"
+    "HTML - это язык?": "Нет",
+    "Роналду - это кто?": "Футболист"
 }
 quiz_by_aki(questions)
 
