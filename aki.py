@@ -1,163 +1,43 @@
-# Задание: 1
-# price = int(input())
-# sale = int(input())
-# sale_in = price - (price * sale // 100)
-# print("Скидка: ", price - sale_in)
-# print("Оплата: ", sale_in)
-
-
-# Задание 2
-# a = int(input())
-# if a % 2 == 0:
-#     if a > 100:
-#         print("Четное и > 100")
-#     else:
-#         print("Четное и <= 100")
-# else:
-#     print("Нечетное")
-
-# Задание 3
-# a = map(int, input().split())
-# sum = 0
-# for i in a:
-#     if i >= 0:
-#         sum += i
-# print(sum)
-
-# Задание 4
-# cnt_gb = int(input("Количество: "))
-# flag = int(input())
-# sum = 1000
-# total = 0
-# if cnt_gb > 50:
-#     sum += 300
-# if cnt_gb > 100:
-#     sum += 500
-#
-# if flag == 1 :
-#     total = sum - (sum * 20 // 100)
-# print(total)
-
-
-# Задание 5
-# age = int(input())
-# salary = int(input())
-# flag = int(input())
-# if age < 18:
-#     print("Отказ: вам меньше 18")
-# elif flag == 1:
-#     print("Отказ: есть задолженности")
-# elif salary < 30000:
-#     print("Отказ: маленькая зарплата")
-# else:
-#     print("Кредит одобрен")
-
-
-# Задание 6
-# mark = int(input())
-# if 100 >= mark >= 0:
-#     if 90 <= mark <= 100:
-#         print("Отлично")
-#     elif 70 <= mark < 90:
-#         print("Хорошо")
-#     elif 50 <= mark < 70:
-#         print("Удовлетворительно")
-#     else:
-#         print("Плохо")
-# else:
-#     print("ERROR")
-
-
-# Задание 7
-# a = list(map(int, input().split()))
-# x = 0
-# y = 0
-# for i in a:
-#     if i % 2 == 0:
-#         x += 1
-#     else:
-#         y += 1
-# print("Четных: ", x)
-# print("Нечтных: ", y)
-
-
-# Задание 8
-# a = list(map(int, input().split()))
-# sum = 0
-# five = 0
-# four = 0
-# three = 0
-# two = 0
-# one = 0
-# avg_cnt = 0
-# for i in a:
-#     sum += i
-#     avg_cnt += 1
-#     if i == 5:
-#         five += 1
-#     elif i == 4:
-#         four += 1
-#     elif i == 3:
-#         three += 1
-#     elif i == 2:
-#         two += 1
-#     elif i == 1:
-#         one += 1
-# print(sum / avg_cnt)
-# print("Кол-во пятерок: ", five)
-# print("Кол-во четверок: ", four)
-# print("Кол-во троек: ", three)
-# print("Кол-во двоек: ", two)
-# print("Кол-во однерок: ", one)
-# if 0 <= sum / avg_cnt <= 5:
-#     if sum / avg_cnt >= 4.5:
-#         print("Группа молодцы!")
-#     elif 3 <= sum / avg_cnt < 4.5:
-#         print("Нужно подтянуться!")
-#     elif sum / avg_cnt < 3:
-#         print("Группа нужно серьезно поработать!")
-# else:
-#     print("ERROR")
-
-
-# Задание 9
-a = list(map(int, input().split()))
-base = int(input())
-cnt = 0
-truly = [0] * len(a)
-for i in a:
-    if i < base:
+def quiz_by_aki(questions):
+    score = 0
+    counter_false_answers = 0
+    counter_true_answers = 0
+    for i, j in questions.items():
         print(i)
-        base -= i
-        truly[cnt] = i
-        cnt += 1
-print(cnt)
-mn = 1902381209312
-mx = 0
-for i in truly:
-    if i < mn:
-        mn = i
-    if i > mx:
-        mx = i
-print("Minimum: ", mn, "Maximum: ", mx)
+        ans = input("Введите свой ответ: ")
+        if ans == j:
+            print("К вам прибавляется 20 очков!")
+            score += 100 / len(questions)
+            counter_true_answers += 1
+        else:
+            print("Неверный ответ!")
+            counter_false_answers += 1
+    print("*********** Вы получили", score, "очков ***********")
+    print("*********** Правильных ответов:", counter_true_answers, "из", len(questions), "***********")
+    print("*********** Неправильных ответов:", counter_false_answers, "из", len(questions), "***********")
+    print("*********** Процент правильных ответов", f"{score}%", "***********")
+    if score >= 80:
+        print("Да вы Эйнштейн! Хорошего вечера!")
+    else:
+        print("Не очень! В следующий раз, приходите с новыми силами!")
 
-# Задание 10
-# a = list(map(int, input().split()))
-# sum = 0
-# avg_cnt = 0
-# for i in a:
-#     sum += i
-#     avg_cnt += 1
-# print(sum)
-# print(sum / avg_cnt)
-# mx = 0
-# for i in a:
-#     if i > mx:
-#         mx = i
-# print(mx)
-# if sum / avg_cnt < 300:
-#     print("Economniy")
-# elif 300 <= sum / avg_cnt <= 700:
-#     print("Normalniy")
-# else:
-#     print("Bez finansovoy gramotnosti")
+def check(ans_to_start_quiz):
+    if ans_to_start_quiz == "Да" or ans_to_start_quiz == "да" or ans_to_start_quiz == "Yes" or ans_to_start_quiz == "yes":
+        return True
+    else:
+        return False
+print("Привет! Готовы к quiz?")
+ans_to_start_quiz = input()
+if check(ans_to_start_quiz) == False:
+    print("Увидимся в следующий раз!")
+    exit()
+questions = {
+    "999 в степени 0. Сколько?": "1",
+    "Столица Люксембурга?": "Люксембург",
+    "6 + 67 + 67 + 7": "147",
+    "Вышел зайчик на крыльцо... Продолжи.": "Почесать свое яйцо",
+    "HTML - это язык?": "Нет"
+}
+quiz_by_aki(questions)
+
+
