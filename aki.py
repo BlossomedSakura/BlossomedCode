@@ -31,6 +31,8 @@ ans_to_start_quiz = input()
 if check(ans_to_start_quiz) == False:
     print("Увидимся в следующий раз!")
     exit()
+else:
+    print("Погнали!")
 questions = {
     "999 в степени 0. Сколько?": "1",
     "Столица Люксембурга?": "Люксембург",
